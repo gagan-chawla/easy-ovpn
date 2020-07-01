@@ -12,7 +12,7 @@ until [[ -f $path && $path == *.ovpn ]]; do
 done
 
 filename="${path##*/}"
-# cp $path .
+cp $path .
 printf "$filename copied to $DIR successfully.\n\n"
 
 printf "Auth Username: "
@@ -33,7 +33,7 @@ printf "$username\n$password" | openssl enc -base64 >> creds/userpass.txt
 printf "$passphrase" >> creds/passphrase.txt
 printf "$secretkey" | openssl enc -base64 >> creds/secretkey
 
-printf "\nSetup Complete.\n"
-printf "To get started, add 'source $DIR/main.sh' at the end of shell configuration file. Eg for Bash, add it to .bashrc\n"
+printf "\nSETUP COMPLETE.\n"
+printf "To get started, add 'source $DIR/main.sh' in your shell configuration file. Eg, for Bash, add it to .bashrc\n"
 printf "To connect to vpn, simply type 'easyovpn'\n"
 printf "Thanks!\n"

@@ -1,1 +1,1 @@
-# easy-vpn
+# easy-ovpn
