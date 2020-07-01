@@ -25,8 +25,7 @@ class OTP(object):
 
     def generate_otp(self, input):
         """
-        :param input: the HMAC counter value to use as the OTP input.
-            Usually either the counter, or the computed integer based on the Unix timestamp
+        :param input: the computed integer based on the Unix timestamp
         """
         if input < 0:
             raise ValueError('input must be positive integer')
@@ -52,9 +51,7 @@ class OTP(object):
     @staticmethod
     def int_to_bytestring(i, padding=8):
         """
-        Turns an integer to the OATH specified
-        bytestring, which is fed to the HMAC
-        along with the secret
+        Turns an integer to the OATH specified bytestring, which is fed to the HMAC along with the secret
         """
         result = bytearray()
         while i != 0:
@@ -66,16 +63,14 @@ class OTP(object):
         return bytes(bytearray(reversed(result)).rjust(padding, b'\0'))
 
 
-
 class TOTP(OTP):
     """
     Handler for time-based OTP counters.
     """
     def __init__(self, *args, **kwargs):
         """
-		:param s: secret in base32 format
-        :param interval: the time interval in seconds
-            for OTP. This defaults to 30.
+        :param s: secret in base32 format
+        :param interval: the time interval in seconds for OTP. This defaults to 30.
         """
         self.interval = kwargs.get('interval', 30)
         super(TOTP, self).__init__(*args, **kwargs)
