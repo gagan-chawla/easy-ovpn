@@ -1,6 +1,6 @@
 # Easy-OVPN
 
-Easy-OVPN is a command line utility that provides easy and hassle-free experience for establishing openvpn connection when 2FA Authenticator is setup.
+Easy-OVPN is a command line utility that provides easy and hassle-free experience for establishing openvpn connection when 2FA authenticator app is setup.
 
 
 ## Requirements
@@ -35,5 +35,6 @@ easyovpn
 
 ## References
 https://pyotp.readthedocs.io/en/latest/
+
 openvpn man page
 
