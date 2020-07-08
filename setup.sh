@@ -59,7 +59,7 @@ stty echo
 printf "\nPassphrase: "
 read passphrase
 
-printf "Secret Authenticator Key: "
+printf "\nSecret Authenticator Key: "
 read secretkey
 
 > creds/userpass
@@ -69,10 +69,7 @@ echo -ne "$username\n$password" | openssl enc -base64 >> creds/userpass
 echo -ne "$passphrase" | openssl enc -base64 >> creds/passphrase
 echo -ne "$secretkey" | openssl enc -base64 >> creds/secretkey
 
-source $DIR/main.sh
-
 printf "\nSETUP COMPLETE.\n"
 printf "To get started, add 'source $DIR/main.sh' in your shell configuration file. Eg, for Bash, add it to .bashrc\n"
 printf "To connect to vpn, simply type 'easyovpn'\n"
 printf "Thanks!\n"
-exit 0
