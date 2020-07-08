@@ -47,7 +47,7 @@ if [ -z "$keepfile" ]; then
 	done
 	filename="${path##*/}"
 	cp "$path" . || { printf "Copy failed!"; exit 1; }
-	printf "$filename copied to $DIR successfully.\n"
+	printf "%s\n" "$filename copied to $DIR successfully."
 fi
 
 printf "\nAuth Username: "
@@ -58,15 +58,16 @@ read password
 stty echo
 printf "\nPassphrase: "
 read passphrase
+
 printf "Secret Authenticator Key: "
 read secretkey
 
 > creds/userpass
 > creds/passphrase
 > creds/secretkey
-printf "$username\n$password" | openssl enc -base64 >> creds/userpass
-printf "$passphrase" | openssl enc -base64 >> creds/passphrase
-printf "$secretkey" | openssl enc -base64 >> creds/secretkey
+echo -ne "$username\n$password" | openssl enc -base64 >> creds/userpass
+echo -ne "$passphrase" | openssl enc -base64 >> creds/passphrase
+echo -ne "$secretkey" | openssl enc -base64 >> creds/secretkey
 
 source $DIR/main.sh
 
